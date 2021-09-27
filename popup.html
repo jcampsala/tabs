@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="tab-groups-page" class="page-container">
+            <div class="main-grid">
+                <div class="tools-row">
+                    <a id="create-group-btn" class="button"><i class="far fa-plus-square"></i> New group</a>
+                    <div></div>
+                    <div></div>
+                    <a class="button"><i class="fas fa-ellipsis-v"></i></a>
+                </div>
+                <div class="separator"></div>
+                <div class="outer-tabs-container scroll-hidden">
+                    <div id="group-grid-container" class="mid-tabs-container">
+                        <!-- <div class="tab-groups-container">
+                            <div class="tabs-row">
+                                <p>First tab</p>
+                            </div>
+                            <div class="tabs-row">
+                                <p>Second tab</p>
+                            </div>
+                            <div class="tabs-row">
+                                <p>Third tab</p>
+                            </div>
+                            <div class="tabs-row">
+                                <p>Fourth tab</p>
+                            </div>
+                            <div class="tabs-row">
+                                <p>Fifth tab</p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="create-group-page" class="page-container hidden-right">
+            <div class="creation-fit-container">
+                <div class="main-grid">
+                    <div class="creation-top-row">
+                        <a id="create-group-back-btn" class="button"><i class="far fa-caret-square-left"></i></a>
+                        <div style="justify-self: left;">
+                            <input id="creation-group-name" class="group-name-input" placeholder="New group name">
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="outer-tabs-container scroll-hidden">
+                        <div class="mid-tabs-container">
+                            <!-- <div class="tabs-container">
+                                <div class="tab-cell">
+                                    <div class="tab-cell-top-row">
+                                        <div class="tab-cell-icon-wrapper"><img class="tab-cell-icon" src="assets/images/icon32.png"></div>
+                                        <div class="tab-cell-title">Example title is looooooong</div>
+                                        <div><a class="button small"><i class="fas fa-ellipsis-v"></i></a></div>
+                                    </div>
+                                    <div class="tab-cell-bottom-row">
+                                        <div class="image-container">
+                                            <img class="contained-image" src="assets/images/dummy-screenshot.png">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-cell">
+                                    <p>First tab</p>
+                                </div>
+                                <div class="tab-cell">
+                                    <p>First tab</p>
+                                </div>
+                                <div class="tab-cell">
+                                    <p>First tab</p>
+                                </div>
+                                <div class="tab-cell">
+                                    <p>First tab</p>
+                                </div>
+                            </div> -->
+                            <div class="create-group-options-container">
+                                <div id="create-empty-group-btn" class="button row-button" style="text-align: center;">
+                                    <div><i class="far fa-folder-open fa-7x"></i></div>
+                                    <div>Create empty</div>
+                                </div>
+                                <div id="create-current-tab-group-btn" class="button row-button" style="text-align: center;">
+                                    <div><i class="fas fa-folder-plus fa-7x"></i></div>
+                                    <div>Create with current tabs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="warning-snackbar" class="snackbar hidden"></div>
+    </div>
+
+    <script src="/assets/js/tab.js"></script>
+    <script src="/assets/js/tabGroup.js"></script>
+    <script src="/assets/js/tabsManager.js"></script>
+    <script src="/assets/js/chromePromises.js"></script>
+    <script src="/assets/js/eventListeners.js"></script>
+    <script src="/assets/js/popup.js"></script>
+</body>
+
+</html>

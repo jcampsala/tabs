@@ -1,0 +1,17 @@
+Background script:
+    Script should register and respond to events triggered when something is done with tabs in normal use.
+    There are two use cases:
+        - There is a selected tab group: BG script should be aware of current selected group and the events triggrered should change said group.
+        - There is not a selected tab group: BG script ignores changes in current session and listens for group creation/selection.
+
+Background script events (assuming a group is selected):
+    - Create tab: Tab gets added to current group tabs array.
+    - Update tab: As user navigates tab urls will change. Each of those should get reflected in current group.
+    - Close tab: Tab gets deleted from current group tabs array.
+    - Create new window: If window was create by the user and not by a group change, current group should be changed to null.
+    
+Background could reflect real time changes (youtube autoplay updates tab while extension is open) via messages API
+
+Functionality checklist:
+    - When changnig between windows the background should keep track of the selected window, as changes in tabs should be reflected if the group exists
+    - (OK) When clicking a group that is already opened it should focus the corresponding window, not open a new one
