@@ -57,8 +57,8 @@ class TabsManager {
     buildRow(group) {
         let rowHtml = `<div id="${group.id}-row" class="tabs-row">
             <div class="tabs-row-top ${this.currentGroup == group ? 'selected' : ''}">
-                <div>${group.name}</div>
-                <div><a id="${group.id}-delete" class="button row-delete-btn"><i class="fas fa-trash-alt"></i></a></div>
+                <div class="row-top-name">${group.name}</div>
+                <div class="row-top-button"><a id="${group.id}-delete" class="row-delete-btn"><i class="fas fa-trash-alt"></i></a></div>
             </div>
             <div id="${group.id}-row-main" class="tabs-row-main">`;
         for(let tab of group.tabs) {

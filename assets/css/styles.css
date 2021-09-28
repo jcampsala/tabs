@@ -95,6 +95,28 @@ body {
     grid-template-rows: 100%;
 }
 
+.row-top-name {
+    margin-left: 10px;
+    align-self: center;
+}
+
+.row-top-button {
+    align-self: center;
+    justify-self: center;
+}
+
+.row-delete-btn {
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    padding: 2px 5px;
+    background-color:rgb(50, 50, 50);
+}
+
+.row-delete-btn:hover {
+    background-color: rgb(100, 100, 100);
+}
+
 .tabs-row-top.selected {
     background-color: rgb(160, 245, 100);
 }
@@ -150,6 +172,11 @@ body {
     padding: 5px 10px;
 }
 
+.button.symmetric {
+    min-width: 50px;
+    text-align: center;
+}
+
 .hidden-right {
     position: absolute;
     top: 0%;
@@ -191,6 +218,61 @@ body {
 .group-name-input:focus {
     outline: none;
     border-bottom: solid rgb(100,100,100);
+}
+
+.hidden-behind {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    background-color: rgba(50, 50, 50, 0);
+}
+
+.fade-in-from-behind {
+    z-index: 99;
+    opacity: 1;
+    backdrop-filter: blur(5px);
+    transition: opacity 200ms ease;
+}
+
+.delete-dialog-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.delete-dialog-base {
+    background-color: rgb(30, 30, 30);
+    border-radius: 5px;
+    width: 50%;
+    height: 30%;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50%;
+}
+
+.delete-dialog-text {
+    align-self: center;
+    justify-self: center;
+}
+
+.delete-dialog-buttons {
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+    align-items: self-end;
 }
 
 .tabs-container {

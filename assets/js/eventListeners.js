@@ -71,8 +71,8 @@ function setNotificationListeners() {
 function validateGroupCreation(manager, withTabs = false) {
     let groupNameInput = document.getElementById('creation-group-name');
     let groupName = groupNameInput.value;
-    console.log(groupName);
     if(groupName.length > 0) {
+        groupName = groupName.length > 50 ? groupName.substring(0, 50) : groupName;
         manager.createNewGroup(groupName, withTabs);
         slidePage(false);
     } else {

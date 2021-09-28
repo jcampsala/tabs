@@ -48,38 +48,12 @@
                     <div class="creation-top-row">
                         <a id="create-group-back-btn" class="button"><i class="far fa-caret-square-left"></i></a>
                         <div style="justify-self: left;">
-                            <input id="creation-group-name" class="group-name-input" placeholder="New group name">
+                            <input id="creation-group-name" class="group-name-input" placeholder="New group name" maxlength="50">
                         </div>
                     </div>
                     <div class="separator"></div>
                     <div class="outer-tabs-container scroll-hidden">
                         <div class="mid-tabs-container">
-                            <!-- <div class="tabs-container">
-                                <div class="tab-cell">
-                                    <div class="tab-cell-top-row">
-                                        <div class="tab-cell-icon-wrapper"><img class="tab-cell-icon" src="assets/images/icon32.png"></div>
-                                        <div class="tab-cell-title">Example title is looooooong</div>
-                                        <div><a class="button small"><i class="fas fa-ellipsis-v"></i></a></div>
-                                    </div>
-                                    <div class="tab-cell-bottom-row">
-                                        <div class="image-container">
-                                            <img class="contained-image" src="assets/images/dummy-screenshot.png">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-cell">
-                                    <p>First tab</p>
-                                </div>
-                                <div class="tab-cell">
-                                    <p>First tab</p>
-                                </div>
-                                <div class="tab-cell">
-                                    <p>First tab</p>
-                                </div>
-                                <div class="tab-cell">
-                                    <p>First tab</p>
-                                </div>
-                            </div> -->
                             <div class="create-group-options-container">
                                 <div id="create-empty-group-btn" class="button row-button" style="text-align: center;">
                                     <div><i class="far fa-folder-open fa-7x"></i></div>
@@ -91,6 +65,17 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="delete-confirmation-page" class="page-container hidden-behind">
+            <div class="delete-dialog-grid">
+                <div class="delete-dialog-base">
+                    <div class="delete-dialog-text">MAIN will be deleted. Confirm?</div>
+                    <div class="delete-dialog-buttons">
+                        <div class="button symmetric">Confirm</div>
+                        <div class="button symmetric">Cancel</div>
                     </div>
                 </div>
             </div>
