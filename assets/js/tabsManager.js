@@ -148,7 +148,17 @@ class TabsManager {
     }
 
     exportJSON() {
-        // set window and tab ids to -1
-        return this.tabGroups.map((tabGroup) => tabGroup.toJSON());
+        return this.tabGroups.map((tabGroup) => {
+            let tabGroupJson = tabGroup.toJSON();
+            tabGroupJson['windowId'] = -1;
+            for(let tabJson of tabGroupJson['tabs']) {
+                tabJson['tabId'] = -1;
+            }
+            return tabGroupJson;
+        });
+    }
+
+    importJSON() {
+        console.error('Not implemented yet');
     }
 }
