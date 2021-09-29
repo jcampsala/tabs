@@ -36,14 +36,29 @@ function setCreationPageListeners(manager) {
     }
 }
 
-function slidePage(slideIn = true) {
-    let creationPage = document.getElementById('create-group-page');
-    if(slideIn) {
-        creationPage.classList.add('slide-from-right');
-        document.getElementById('creation-group-name').focus();
-    } else {
-        creationPage.classList.remove('slide-from-right');
-        document.getElementById('creation-group-name').value = '';
+function setDeleteDialogListeners() {
+    let dialog = document.getElementById('delete-dialog-page');
+    dialog.togglePage = (show) => 
+        show ? dialog.classList.add('fade-in-from-behind') : dialog.classList.remove('fade-in-from-behind');
+    dialog.updateTargetName = (name) =>
+        document.getElementById('delete-group-name').innerHTML = name;
+
+    let confirmButton = document.getElementById('delete-dialog-confirm');
+    confirmButton.onclick = () => {
+        confirmButton.dialogAction();
+        clearDialogPage();
+        dialog.togglePage(false);
+    }
+    let cancelButton = document.getElementById('delete-dialog-cancel');
+    cancelButton.onclick = () => {
+        clearDialogPage();
+        dialog.togglePage(false);
+    }
+
+    let dialogOut = document.getElementById('delete-dialog-out');
+    dialogOut.onclick = () => {
+        clearDialogPage();
+        dialog.togglePage(false);
     }
 } 
 
@@ -66,6 +81,17 @@ function setNotificationListeners() {
             snackbar.classList.remove('fadingOut');
         }, 3000);
     };
+}
+
+function slidePage(slideIn = true) {
+    let creationPage = document.getElementById('create-group-page');
+    if(slideIn) {
+        creationPage.classList.add('slide-from-right');
+        document.getElementById('creation-group-name').focus();
+    } else {
+        creationPage.classList.remove('slide-from-right');
+        document.getElementById('creation-group-name').value = '';
+    }
 }
 
 function validateGroupCreation(manager, withTabs = false) {
@@ -94,8 +120,14 @@ function hideSnackbar() {
     snackbar.fadeOut();
 }
 
+function clearDialogPage() {
+    document.getElementById('delete-dialog-confirm').dialogAction = () => {};
+    document.getElementById('delete-group-name').innerHTML = '';
+}
+
 function initAllListeners(manager) {
     setMainPageListeners();
     setCreationPageListeners(manager);
+    setDeleteDialogListeners();
     setNotificationListeners();
 }

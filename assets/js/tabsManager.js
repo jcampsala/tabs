@@ -2,7 +2,6 @@ class TabsManager {
     constructor() {
         this.tabGroups = [];
         this.currentGroup = null;
-        this.rowReferences = [];
         this.ready = false;
     }
 
@@ -105,9 +104,16 @@ class TabsManager {
 
     registerTabGroupEvents(targets = []) {
         let targetGroups = targets.length > 0 ? targets : this.tabGroups;
+        let dialog = document.getElementById('delete-dialog-page');
+        let confirmButton = document.getElementById('delete-dialog-confirm');
         for(let tabGroup of targetGroups) {
             let deleteBtn = tabGroup.getDeleteButton();
-            deleteBtn.onclick = () => this.deleteTabGroup(tabGroup.id);
+            deleteBtn.onclick = () => {
+                confirmButton.dialogAction = () => this.deleteTabGroup(tabGroup.id);
+                dialog.updateTargetName(tabGroup.name);
+                dialog.togglePage(true);
+            }
+
             let row = tabGroup.getDOMRow();
             row.onclick = () => this.openGroup(tabGroup.id);
         }
@@ -139,5 +145,10 @@ class TabsManager {
             selectedTabGroup.linkWindow(newWindow.id);
             this.saveChanges();
         }
+    }
+
+    exportJSON() {
+        // set window and tab ids to -1
+        return this.tabGroups.map((tabGroup) => tabGroup.toJSON());
     }
 }
