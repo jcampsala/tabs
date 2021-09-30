@@ -148,7 +148,7 @@ class TabsManager {
     }
 
     exportJSON() {
-        return this.tabGroups.map((tabGroup) => {
+        let json = this.tabGroups.map((tabGroup) => {
             let tabGroupJson = tabGroup.toJSON();
             tabGroupJson['windowId'] = -1;
             for(let tabJson of tabGroupJson['tabs']) {
@@ -156,6 +156,12 @@ class TabsManager {
             }
             return tabGroupJson;
         });
+        let hiddenTextArea = document.createElement('textarea');
+        hiddenTextArea.value = JSON.stringify(json);
+        let downloadElem = document.createElement('a');
+        downloadElem.href = `data:text/plain;charset=utf-8,${encodeURIComponent(JSON.stringify(json))}`;
+        downloadElem.setAttribute('download', `tabs_export_${Date.now()}.json`);
+        downloadElem.click();
     }
 
     importJSON() {
