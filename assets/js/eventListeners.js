@@ -62,7 +62,7 @@ function setDeleteDialogListeners() {
     }
 } 
 
-function setSettingsListeners() {
+function setSettingsListeners(manager) {
     let settings = document.getElementById('settings-page');
     settings.togglePage = (show) => 
         show ? settings.classList.add('slide-from-above') : settings.classList.remove('slide-from-above');
@@ -75,6 +75,39 @@ function setSettingsListeners() {
     let backButton = document.getElementById('settings-back-btn');
     backButton.onclick = () => {
         settings.togglePage(false);
+    }
+
+    let fileUpload = document.getElementById('file-upload');
+    fileUpload.onchange = (event) => {
+        if(fileUpload.files.length > 0) {
+            let importFile = fileUpload.files[0];
+            if(importFile.type === 'application/json') {
+                let reader = new FileReader();
+                reader.readAsText(importFile);
+                reader.onload = (event) => {
+                    parseImportFile(manager, event.target.result);
+                }
+            } else {
+                showSnackbar('Not a JSON file!');
+            }
+        }
+    }
+
+    let dropZone = document.getElementById('drop-zone');
+    dropZone.onclick = () => {
+        fileUpload.click();
+    }
+}
+
+function parseImportFile(manager, fileContents) {
+    try {
+        let importedJSON = JSON.parse(fileContents);
+        let importResult = manager.importJSON(importedJSON);
+        if(importResult === -1) {
+            showSnackbar('JSON file contains invalid data');
+        }
+    } catch(e) {
+        showSnackbar('JSON file is not valid!');
     }
 }
 
@@ -128,7 +161,7 @@ function validateGroupCreation(manager, withTabs = false) {
 function showSnackbar(text, action) {
     let snackbar = document.getElementById('warning-snackbar');
     snackbar.fadeIn(text);
-    action();
+    if(action) action();
 }
 
 function hideSnackbar() {
@@ -145,6 +178,6 @@ function initAllListeners(manager) {
     setMainPageListeners();
     setCreationPageListeners(manager);
     setDeleteDialogListeners();
-    setSettingsListeners();
+    setSettingsListeners(manager);
     setNotificationListeners();
 }

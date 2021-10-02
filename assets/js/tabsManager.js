@@ -132,10 +132,16 @@ class TabsManager {
     async openGroup(id) {
         let selectedTabGroup = this.getGroupById(id);
         if(selectedTabGroup.hasLinkedWindow()) {
-            await chrome.windows.update(selectedTabGroup.windowId, {
-                focused: true,
-                state: 'maximized'
-            });
+            try {
+                await chrome.windows.update(selectedTabGroup.windowId, {
+                    focused: true,
+                    state: 'maximized'
+                });
+            } catch(e) {
+                // TODO: tab tracking can fail when this route is taken
+                selectedTabGroup.unlinkWindow();
+                this.openGroup(id);
+            }
         } else {
             let newWindow = await chrome.windows.create({
                 focused: true,
@@ -164,7 +170,14 @@ class TabsManager {
         downloadElem.click();
     }
 
-    importJSON() {
-        console.error('Not implemented yet');
+    importJSON(data) {
+        try {
+            let parsedData = data.map((group) => TabGroup.fromJSON(group));
+            this.tabGroups = parsedData;
+            this.saveAndUpdate();
+            return 1;
+        } catch(e) {
+            return -1;
+        }
     }
 }

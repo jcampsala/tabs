@@ -68,14 +68,14 @@
             <div class="page-fit-container">
                 <div class="settings-rows">
                     <div class="settings-actions">
-                        <a id="settings-back-btn" class="button"><i class="far fa-times-circle"></i></a>
+                        <a id="settings-back-btn" class="button"><i class="far fa-times-circle fa-lg"></i></a>
                     </div>
                     <div class="settings-title">Settings</div>
                     <div></div>
                     <div class="settings-tile">
                         <div class="settings-tile-label">Theme selector</div>
                         <div class="settings-tile-action">
-                            <select name="theme" id="theme-select">
+                            <select name="theme" id="theme-select" class="selector">
                                 <option value="0">Browser theme</option>
                                 <option value="1">Light</option>
                                 <option value="2">Dark</option>
@@ -85,14 +85,21 @@
                     <div class="settings-tile">
                         <div class="settings-tile-label">Language selector</div>
                         <div class="settings-tile-action">
-                            <select name="lang" id="lang-select">
+                            <select name="lang" id="lang-select" class="selector">
                                 <option value="0">EN</option>
                                 <option value="1">ES</option>
                                 <option value="2">FR</option>
                             </select>
                         </div>
                     </div>
-                    <div>import json</div>
+                    <div></div>
+                    <div class="file-import-container">
+                        <div class="title">Import file</div>
+                        <div id="drop-zone" class="drop-zone">
+                            <i class="fas fa-file-upload fa-5x"></i>
+                            <input id="file-upload" style="display: none;" type="file" accept="application/json">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
