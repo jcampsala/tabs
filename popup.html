@@ -96,14 +96,26 @@
                     <div class="file-import-container">
                         <div class="title">Import file</div>
                         <div id="drop-zone" class="drop-zone">
-                            <i class="fas fa-file-upload fa-5x"></i>
+                            <i class="fas fa-file-upload fa-5x file-icon"></i>
                             <input id="file-upload" style="display: none;" type="file" accept="application/json">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="warning-snackbar" class="snackbar hidden"></div>
+        <div id="import-dialog-page" class="page-container hidden-behind">
+            <div id="import-dialog-out" class="import-dialog-grid">
+                <div class="import-dialog-base">
+                    <div class="import-dialog-text"><strong><span id="import-group-number"></span></strong> tab groups found. Select an import method.</div>
+                    <div class="import-dialog-buttons">
+                        <div id="import-dialog-overwrite" class="button">Overwrite</div>
+                        <div id="import-dialog-merge" class="button">Merge</div>
+                        <div id="import-dialog-cancel" class="button">Cancel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="snackbar" class="snackbar hidden"></div>
     </div>
 
     <script src="/assets/js/tab.js"></script>

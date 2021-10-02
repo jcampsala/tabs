@@ -60,7 +60,7 @@ function setDeleteDialogListeners() {
         clearDialogPage();
         dialog.togglePage(false);
     }
-} 
+}
 
 function setSettingsListeners(manager) {
     let settings = document.getElementById('settings-page');
@@ -78,6 +78,7 @@ function setSettingsListeners(manager) {
     }
 
     let fileUpload = document.getElementById('file-upload');
+    // TODO: onchange does not trigger if import is canceled and retried with same file
     fileUpload.onchange = (event) => {
         if(fileUpload.files.length > 0) {
             let importFile = fileUpload.files[0];
@@ -85,12 +86,19 @@ function setSettingsListeners(manager) {
                 let reader = new FileReader();
                 reader.readAsText(importFile);
                 reader.onload = (event) => {
-                    parseImportFile(manager, event.target.result);
+                    let importSize = parseImportFile(manager, event.target.result);
+                    if(importSize > 0) {
+                        let importDialog = document.getElementById('import-dialog-page')
+                        importDialog.updateImportNumber(importSize);
+                        importDialog.setImportContent(JSON.parse(event.target.result));
+                        importDialog.togglePage(true);
+                    }
                 }
             } else {
                 showSnackbar('Not a JSON file!');
             }
         }
+        fileUpload.value = null;
     }
 
     let dropZone = document.getElementById('drop-zone');
@@ -102,17 +110,64 @@ function setSettingsListeners(manager) {
 function parseImportFile(manager, fileContents) {
     try {
         let importedJSON = JSON.parse(fileContents);
-        let importResult = manager.importJSON(importedJSON);
-        if(importResult === -1) {
+        let importSize = manager.checkImportData(importedJSON);
+        if(importSize < 1) {
             showSnackbar('JSON file contains invalid data');
+            return -1;
+        } else {
+            return importSize;
         }
     } catch(e) {
         showSnackbar('JSON file is not valid!');
+        return -1;
+    }
+}
+
+function setImportDialogListeners(manager) {
+    let dialog = document.getElementById('import-dialog-page');
+    dialog.togglePage = (show) => 
+        show ? dialog.classList.add('fade-in-from-behind') : dialog.classList.remove('fade-in-from-behind');
+    dialog.updateImportNumber = (number) =>
+        document.getElementById('import-group-number').innerHTML = number;
+    dialog.setImportContent = (content) => {
+        dialog.importContent = content;
+    }
+
+    let overwriteButton = document.getElementById('import-dialog-overwrite');
+    overwriteButton.onclick = () => {
+        let importResult = manager.importJSON(dialog.importContent);
+        if(importResult > 0) {
+            showSnackbar(`${importResult} groups imported`, null, true);
+        } else {
+            showSnackbar('Import failed!');
+        }
+        dialog.togglePage(false);
+    }
+
+    let mergeButton = document.getElementById('import-dialog-merge');
+    mergeButton.onclick = () => {
+        let importResult = manager.importJSON(dialog.importContent, true);
+        if(importResult > 0) {
+            showSnackbar(`${importResult} groups imported`, null, true);
+        } else {
+            showSnackbar('Import failed!');
+        }
+        dialog.togglePage(false);
+    }
+
+    let cancelButton = document.getElementById('import-dialog-cancel');
+    cancelButton.onclick = () => {
+        dialog.togglePage(false);
+    }
+
+    let dialogOut = document.getElementById('import-dialog-out');
+    dialogOut.onclick = () => {
+        dialog.togglePage(false);
     }
 }
 
 function setNotificationListeners() {
-    let snackbar = document.getElementById('warning-snackbar');
+    let snackbar = document.getElementById('snackbar');
     snackbar.fadeIn = function(text) {
         clearInterval(this.fadeOutTimeout);
         clearInterval(this.hideTimeout);
@@ -158,14 +213,16 @@ function validateGroupCreation(manager, withTabs = false) {
     }
 }
 
-function showSnackbar(text, action) {
-    let snackbar = document.getElementById('warning-snackbar');
+function showSnackbar(text, action, success = false) {
+    let snackbar = document.getElementById('snackbar');
+    success ? snackbar.classList.remove('snackbar-warning') : snackbar.classList.add('snackbar-warning');
+    success ? snackbar.classList.add('snackbar-success') : snackbar.classList.remove('snackbar-success');
     snackbar.fadeIn(text);
     if(action) action();
 }
 
 function hideSnackbar() {
-    let snackbar = document.getElementById('warning-snackbar');
+    let snackbar = document.getElementById('snackbar');
     snackbar.fadeOut();
 }
 
@@ -179,5 +236,6 @@ function initAllListeners(manager) {
     setCreationPageListeners(manager);
     setDeleteDialogListeners();
     setSettingsListeners(manager);
+    setImportDialogListeners(manager);
     setNotificationListeners();
 }

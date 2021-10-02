@@ -170,12 +170,30 @@ class TabsManager {
         downloadElem.click();
     }
 
-    importJSON(data) {
+    checkImportData(data) {
         try {
             let parsedData = data.map((group) => TabGroup.fromJSON(group));
-            this.tabGroups = parsedData;
+            return parsedData.length;
+        } catch(e) {
+            return -1;
+        }
+    }
+
+    importJSON(data, merge = false) {
+        try {
+            let parsedData = data.map((group) => TabGroup.fromJSON(group));
+            if(merge) {
+                for(let tabGroup of parsedData) {
+                    if(this.getGroupById(tabGroup.id)) {
+                        tabGroup.id = Date.now();
+                    }
+                    this.tabGroups.push(tabGroup);
+                }
+            } else {
+                this.tabGroups = parsedData;
+            }
             this.saveAndUpdate();
-            return 1;
+            return parsedData.length;
         } catch(e) {
             return -1;
         }

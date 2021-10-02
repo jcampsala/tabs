@@ -412,7 +412,6 @@ body {
 .snackbar {
     position: absolute;
     border-radius: 5px;
-    background-color: rgb(240, 75, 75);
     bottom: 20px;
     left: 20px;
     right: 20px;
@@ -436,6 +435,14 @@ body {
 .snackbar.fadingOut {
     opacity: 0;
     transition: opacity 500ms;
+}
+
+.snackbar-warning {
+    background-color: rgb(240, 75, 75);
+}
+
+.snackbar-success {
+    background-color: rgb(75, 240, 75);
 }
 
 .selector {
@@ -465,7 +472,7 @@ body {
 }
 
 .file-import-container .drop-zone {
-    border: solid 2px white;
+    border: solid 2px rgb(80, 80, 80);
     margin: 10px;
     border-radius: 5px;
     display: grid;
@@ -473,4 +480,55 @@ body {
     grid-template-rows: 100%;
     align-items: center;
     justify-items: center;
+    cursor: pointer;
+}
+
+.file-import-container .drop-zone:hover {
+    border: solid 2px rgb(250, 250, 255);
+}
+
+.file-import-container .file-icon {
+    color: rgb(80, 80, 80);
+}
+
+.file-import-container .drop-zone:hover .file-icon {
+    color: rgb(255, 255, 255);
+}
+
+.import-dialog-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.import-dialog-base {
+    background-color: rgb(30, 30, 30);
+    border-radius: 5px;
+    width: 60%;
+    height: 30%;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50%;
+}
+
+.import-dialog-text {
+    align-self: center;
+    justify-self: center;
+}
+
+.import-dialog-buttons {
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 100%;
+    width: 100%;
+    height: 100%;
+    justify-items: end;
+    align-items: self-end;
 }
