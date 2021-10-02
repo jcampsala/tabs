@@ -16,7 +16,7 @@
                     <a id="create-group-btn" class="button"><i class="far fa-plus-square"></i> New group</a>
                     <div></div>
                     <div></div>
-                    <a class="button"><i class="fas fa-cog"></i></a>
+                    <a id="settings-btn" class="button"><i class="fas fa-cog"></i></a>
                 </div>
                 <div class="separator"></div>
                 <div class="outer-tabs-container scroll-hidden">
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div id="create-group-page" class="page-container hidden-right">
-            <div class="creation-fit-container">
+            <div class="page-fit-container">
                 <div class="main-grid">
                     <div class="creation-top-row">
                         <a id="create-group-back-btn" class="button"><i class="far fa-caret-square-left"></i></a>
@@ -61,6 +61,38 @@
                         <div id="delete-dialog-confirm" class="button symmetric">Confirm</div>
                         <div id="delete-dialog-cancel" class="button symmetric">Cancel</div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="settings-page" class="page-container hidden-above">
+            <div class="page-fit-container">
+                <div class="settings-rows">
+                    <div class="settings-actions">
+                        <a id="settings-back-btn" class="button"><i class="far fa-times-circle"></i></a>
+                    </div>
+                    <div class="settings-title">Settings</div>
+                    <div></div>
+                    <div class="settings-tile">
+                        <div class="settings-tile-label">Theme selector</div>
+                        <div class="settings-tile-action">
+                            <select name="theme" id="theme-select">
+                                <option value="0">Browser theme</option>
+                                <option value="1">Light</option>
+                                <option value="2">Dark</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-tile">
+                        <div class="settings-tile-label">Language selector</div>
+                        <div class="settings-tile-action">
+                            <select name="lang" id="lang-select">
+                                <option value="0">EN</option>
+                                <option value="1">ES</option>
+                                <option value="2">FR</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>import json</div>
                 </div>
             </div>
         </div>

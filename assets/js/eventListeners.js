@@ -62,6 +62,22 @@ function setDeleteDialogListeners() {
     }
 } 
 
+function setSettingsListeners() {
+    let settings = document.getElementById('settings-page');
+    settings.togglePage = (show) => 
+        show ? settings.classList.add('slide-from-above') : settings.classList.remove('slide-from-above');
+    
+    let settingsButton = document.getElementById('settings-btn');
+    settingsButton.onclick = () => {
+        settings.togglePage(true);
+    }
+
+    let backButton = document.getElementById('settings-back-btn');
+    backButton.onclick = () => {
+        settings.togglePage(false);
+    }
+}
+
 function setNotificationListeners() {
     let snackbar = document.getElementById('warning-snackbar');
     snackbar.fadeIn = function(text) {
@@ -129,5 +145,6 @@ function initAllListeners(manager) {
     setMainPageListeners();
     setCreationPageListeners(manager);
     setDeleteDialogListeners();
+    setSettingsListeners();
     setNotificationListeners();
 }
