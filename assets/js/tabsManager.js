@@ -60,12 +60,26 @@ class TabsManager {
                 <div class="row-top-button"><a id="${group.id}-delete" class="row-delete-btn"><i class="fas fa-trash-alt"></i></a></div>
             </div>
             <div id="${group.id}-row-main" class="tabs-row-main">`;
+        let limit = 5; let count = 0;
         for(let tab of group.tabs) {
-            rowHtml += `<div class="tab-list-icon">
-                <div class="centered-icon-container">
-                    <img class="contained-icon" src="${tab.favIconUrl ?? 'assets/images/icon32.png'}">
-                </div>
-            </div>`; 
+            if(count < limit) {
+                rowHtml += `<div class="tab-list-icon">
+                    <div class="centered-icon-container">
+                        <img class="contained-icon" src="${tab.favIconUrl ?? 'assets/images/icon32.png'}">
+                    </div>
+                </div>`;
+            } else {
+                rowHtml += `<div class="tab-list-icon">
+                    <div class="centered-icon-container">
+                        <div class="contained-icon more-tab">
+                            <i class="fas fa-plus"></i>
+                            <span style="font-size: 15px;"><strong>${group.tabs.length - count}</strong></span>
+                        </div>
+                    </div>
+                </div>`;
+                break;
+            }
+            count += 1;
         }
         rowHtml += `</div>
             </div>`;
