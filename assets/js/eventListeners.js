@@ -105,6 +105,12 @@ function setSettingsListeners(manager) {
     dropZone.onclick = () => {
         fileUpload.click();
     }
+
+    let exportBtn = document.getElementById('export-btn');
+    exportBtn.onclick = () => {
+        manager.exportJSON();
+        showSnackbar('Export file generated!', null, true);
+    }
 }
 
 function parseImportFile(manager, fileContents) {

@@ -1,9 +1,12 @@
 let manager;
+let settingsManager;
 
 async function init() {
     manager = new TabsManager();
     await manager.init();
-    console.log(manager);
+
+    settingsManager = new SettingsManager();
+    await settingsManager.init();
 
     initAllListeners(manager);
 }

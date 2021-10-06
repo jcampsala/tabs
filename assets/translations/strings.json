@@ -1,0 +1,34 @@
+{
+    "settings": {
+        "en": "Settings",
+        "es": "Ajustes"
+    },
+    "new-group": {
+        "en": "New group",
+        "es": "Nuevo grupo"
+    },
+    "create-empty": {
+        "en": "Create empty",
+        "es": "Crear vacío"
+    },
+    "create-current": {
+        "en": "Create current",
+        "es": "Crear con actuales"
+    },
+    "confirm-delete": {
+        "en": "will be deleted. Confirm?",
+        "es": "va a ser eliminado. ¿Confirmar?"
+    },
+    "confirm": {
+        "en": "Confirm",
+        "es": "Confirmar"
+    },
+    "cancel": {
+        "en": "Cancel",
+        "es": "Cancelar"
+    },
+    "theme-selector": {
+        "en": "Theme selector",
+        "es": "Selector de tema"
+    }
+}

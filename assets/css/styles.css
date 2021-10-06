@@ -304,6 +304,7 @@ body {
     height: 100%;
     grid-template-columns: 100%;
     grid-template-rows: 5% 25% 10% 10% 10% 5% 35%;
+    row-gap: 2px;
 }
 
 .settings-actions {

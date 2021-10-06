@@ -13,7 +13,7 @@
         <div id="tab-groups-page" class="page-container">
             <div class="main-grid">
                 <div class="tools-row">
-                    <a id="create-group-btn" class="button"><i class="far fa-plus-square"></i> New group</a>
+                    <a id="create-group-btn" class="button"><i class="far fa-plus-square"></i> <span class="translatable" data-key="new-group">New group</span></a>
                     <div></div>
                     <div></div>
                     <a id="settings-btn" class="button"><i class="fas fa-cog"></i></a>
@@ -41,11 +41,11 @@
                             <div class="create-group-options-container">
                                 <div id="create-empty-group-btn" class="button row-button" style="text-align: center;">
                                     <div><i class="far fa-folder-open fa-7x"></i></div>
-                                    <div>Create empty</div>
+                                    <div><span class="translatable" data-key="create-empty">Create empty</span></div>
                                 </div>
                                 <div id="create-current-tab-group-btn" class="button row-button" style="text-align: center;">
                                     <div><i class="fas fa-folder-plus fa-7x"></i></div>
-                                    <div>Create with current tabs</div>
+                                    <div><span class="translatable" data-key="create-current">Create with current tabs</span></div>
                                 </div>
                             </div>
                         </div>
@@ -56,10 +56,10 @@
         <div id="delete-dialog-page" class="page-container hidden-behind">
             <div id="delete-dialog-out" class="delete-dialog-grid">
                 <div class="delete-dialog-base">
-                    <div class="delete-dialog-text"><span id="delete-group-name"></span> will be deleted. Confirm?</div>
+                    <div class="delete-dialog-text"><span id="delete-group-name"></span> <span class="translatable" data-key="confirm-delete">will be deleted. Confirm?</span></div>
                     <div class="delete-dialog-buttons">
-                        <div id="delete-dialog-confirm" class="button symmetric">Confirm</div>
-                        <div id="delete-dialog-cancel" class="button symmetric">Cancel</div>
+                        <div id="delete-dialog-confirm" class="button symmetric"><span class="translatable" data-key="confirm">Confirm</span></div>
+                        <div id="delete-dialog-cancel" class="button symmetric"><span class="translatable" data-key="cancel">Cancel</span></div>
                     </div>
                 </div>
             </div>
@@ -70,31 +70,35 @@
                     <div class="settings-actions">
                         <a id="settings-back-btn" class="button"><i class="far fa-times-circle fa-lg"></i></a>
                     </div>
-                    <div class="settings-title">Settings</div>
-                    <div></div>
+                    <div class="settings-title"><span class="translatable" data-key="settings">Settings</span></div>
                     <div class="settings-tile">
-                        <div class="settings-tile-label">Theme selector</div>
+                        <div class="settings-tile-label"><span class="translatable" data-key="theme-selector">Theme selector</span></div>
                         <div class="settings-tile-action">
-                            <select name="theme" id="theme-select" class="selector">
-                                <option value="0">Browser theme</option>
-                                <option value="1">Light</option>
-                                <option value="2">Dark</option>
+                            <select name="theme" id="theme-select" class="selector" disabled>
+                                <option value="0"><span class="translatable" data-key="settings">Browser theme</span></option>
+                                <option value="1"><span class="translatable" data-key="settings">Light</span></option>
+                                <option value="2"><span class="translatable" data-key="settings">Dark</span></option>
                             </select>
                         </div>
                     </div>
                     <div class="settings-tile">
-                        <div class="settings-tile-label">Language selector</div>
+                        <div class="settings-tile-label"><span class="translatable" data-key="settings">Language selector</span></div>
                         <div class="settings-tile-action">
-                            <select name="lang" id="lang-select" class="selector">
-                                <option value="0">EN</option>
-                                <option value="1">ES</option>
-                                <option value="2">FR</option>
+                            <select name="lang" id="lang-select" class="selector" disabled>
+                                <option value="en">EN</option>
+                                <option value="es">ES</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="settings-tile">
+                        <div class="settings-tile-label"><span class="translatable" data-key="settings">Data export</span></div>
+                        <div class="settings-tile-action">
+                            <div id="export-btn" class="button"><span class="translatable" data-key="settings">Export</span></div>
                         </div>
                     </div>
                     <div></div>
                     <div class="file-import-container">
-                        <div class="title">Import file</div>
+                        <div class="title"><span class="translatable" data-key="settings">Import file</span></div>
                         <div id="drop-zone" class="drop-zone">
                             <i class="fas fa-file-upload fa-5x file-icon"></i>
                             <input id="file-upload" style="display: none;" type="file" accept="application/json">
@@ -106,11 +110,11 @@
         <div id="import-dialog-page" class="page-container hidden-behind">
             <div id="import-dialog-out" class="import-dialog-grid">
                 <div class="import-dialog-base">
-                    <div class="import-dialog-text"><strong><span id="import-group-number"></span></strong> tab groups found. Select an import method.</div>
+                    <div class="import-dialog-text"><strong><span id="import-group-number"></span></strong> <span class="translatable" data-key="settings">tab groups found. Select an import method.</span></div>
                     <div class="import-dialog-buttons">
-                        <div id="import-dialog-overwrite" class="button">Overwrite</div>
-                        <div id="import-dialog-merge" class="button">Merge</div>
-                        <div id="import-dialog-cancel" class="button">Cancel</div>
+                        <div id="import-dialog-overwrite" class="button"><span class="translatable" data-key="settings">Overwrite</span></div>
+                        <div id="import-dialog-merge" class="button"><span class="translatable" data-key="settings">Merge</span></div>
+                        <div id="import-dialog-cancel" class="button"><span class="translatable" data-key="settings">Cancel</span></div>
                     </div>
                 </div>
             </div>
@@ -121,6 +125,7 @@
     <script src="/assets/js/tab.js"></script>
     <script src="/assets/js/tabGroup.js"></script>
     <script src="/assets/js/tabsManager.js"></script>
+    <script src="/assets/js/settingsManager.js"></script>
     <script src="/assets/js/chromePromises.js"></script>
     <script src="/assets/js/eventListeners.js"></script>
     <script src="/assets/js/popup.js"></script>

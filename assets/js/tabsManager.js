@@ -65,7 +65,7 @@ class TabsManager {
             if(count < limit) {
                 rowHtml += `<div class="tab-list-icon">
                     <div class="centered-icon-container">
-                        <img class="contained-icon" src="${tab.favIconUrl ?? 'assets/images/icon32.png'}">
+                        <img class="contained-icon" src="${tab.favIconUrl != null && tab.favIconUrl.length > 0 ? tab.favIconUrl : 'assets/images/icon32.png'}">
                     </div>
                 </div>`;
             } else {
