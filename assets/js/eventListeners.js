@@ -16,22 +16,22 @@ function setMainPageListeners() {
     };
 }
 
-function setCreationPageListeners(manager) {
+function setCreationPageListeners(tabsManager) {
     document.getElementById('create-group-back-btn').onclick = () => {
         slidePage(false);
     };
 
     document.getElementById('create-empty-group-btn').onclick = () => {
-        validateGroupCreation(manager);
+        validateGroupCreation(tabsManager);
     }
 
     document.getElementById('create-current-tab-group-btn').onclick = () => {
-        validateGroupCreation(manager, true);
+        validateGroupCreation(tabsManager, true);
     }
 
     document.getElementById('creation-group-name').onkeyup = (event) => {
         if(event.key == 'Enter') {
-            validateGroupCreation(manager, true);
+            validateGroupCreation(tabsManager, true);
         }
     }
 }
@@ -62,7 +62,7 @@ function setDeleteDialogListeners() {
     }
 }
 
-function setSettingsListeners(manager) {
+function setSettingsListeners(tabsManager, settingsManager) {
     let settings = document.getElementById('settings-page');
     settings.togglePage = (show) => 
         show ? settings.classList.add('slide-from-above') : settings.classList.remove('slide-from-above');
@@ -86,7 +86,7 @@ function setSettingsListeners(manager) {
                 let reader = new FileReader();
                 reader.readAsText(importFile);
                 reader.onload = (event) => {
-                    let importSize = parseImportFile(manager, event.target.result);
+                    let importSize = parseImportFile(tabsManager, event.target.result);
                     if(importSize > 0) {
                         let importDialog = document.getElementById('import-dialog-page')
                         importDialog.updateImportNumber(importSize);
@@ -108,15 +108,27 @@ function setSettingsListeners(manager) {
 
     let exportBtn = document.getElementById('export-btn');
     exportBtn.onclick = () => {
-        manager.exportJSON();
+        tabsManager.exportJSON();
         showSnackbar('Export file generated!', null, true);
+    }
+
+    let themeSelect = document.getElementById('theme-select');
+    themeSelect.value = settingsManager.theme;
+    themeSelect.onchange = () => {
+        settingsManager.updateTheme(parseInt(themeSelect.value));
+    }
+
+    let languageSelect = document.getElementById('lang-select');
+    languageSelect.value = settingsManager.language;
+    languageSelect.onchange = () => {
+        settingsManager.updateLanguage(languageSelect.value);
     }
 }
 
-function parseImportFile(manager, fileContents) {
+function parseImportFile(tabsManager, fileContents) {
     try {
         let importedJSON = JSON.parse(fileContents);
-        let importSize = manager.checkImportData(importedJSON);
+        let importSize = tabsManager.checkImportData(importedJSON);
         if(importSize < 1) {
             showSnackbar('JSON file contains invalid data');
             return -1;
@@ -129,7 +141,7 @@ function parseImportFile(manager, fileContents) {
     }
 }
 
-function setImportDialogListeners(manager) {
+function setImportDialogListeners(tabsManager) {
     let dialog = document.getElementById('import-dialog-page');
     dialog.togglePage = (show) => 
         show ? dialog.classList.add('fade-in-from-behind') : dialog.classList.remove('fade-in-from-behind');
@@ -141,7 +153,7 @@ function setImportDialogListeners(manager) {
 
     let overwriteButton = document.getElementById('import-dialog-overwrite');
     overwriteButton.onclick = () => {
-        let importResult = manager.importJSON(dialog.importContent);
+        let importResult = tabsManager.importJSON(dialog.importContent);
         if(importResult > 0) {
             showSnackbar(`${importResult} groups imported`, null, true);
         } else {
@@ -152,7 +164,7 @@ function setImportDialogListeners(manager) {
 
     let mergeButton = document.getElementById('import-dialog-merge');
     mergeButton.onclick = () => {
-        let importResult = manager.importJSON(dialog.importContent, true);
+        let importResult = tabsManager.importJSON(dialog.importContent, true);
         if(importResult > 0) {
             showSnackbar(`${importResult} groups imported`, null, true);
         } else {
@@ -204,12 +216,12 @@ function slidePage(slideIn = true) {
     }
 }
 
-function validateGroupCreation(manager, withTabs = false) {
+function validateGroupCreation(tabsManager, withTabs = false) {
     let groupNameInput = document.getElementById('creation-group-name');
     let groupName = groupNameInput.value;
     if(groupName.length > 0) {
         groupName = groupName.length > 50 ? groupName.substring(0, 50) : groupName;
-        manager.createNewGroup(groupName, withTabs);
+        tabsManager.createNewGroup(groupName, withTabs);
         slidePage(false);
     } else {
         let inputFocus = () => {
@@ -237,11 +249,11 @@ function clearDialogPage() {
     document.getElementById('delete-group-name').innerHTML = '';
 }
 
-function initAllListeners(manager) {
+function initAllListeners(tabsManager, settingsManager) {
     setMainPageListeners();
-    setCreationPageListeners(manager);
+    setCreationPageListeners(tabsManager);
     setDeleteDialogListeners();
-    setSettingsListeners(manager);
-    setImportDialogListeners(manager);
+    setSettingsListeners(tabsManager, settingsManager);
+    setImportDialogListeners(tabsManager);
     setNotificationListeners();
 }

@@ -74,31 +74,31 @@
                     <div class="settings-tile">
                         <div class="settings-tile-label"><span class="translatable" data-key="theme-selector">Theme selector</span></div>
                         <div class="settings-tile-action">
-                            <select name="theme" id="theme-select" class="selector" disabled>
-                                <option value="0"><span class="translatable" data-key="settings">Browser theme</span></option>
-                                <option value="1"><span class="translatable" data-key="settings">Light</span></option>
-                                <option value="2"><span class="translatable" data-key="settings">Dark</span></option>
+                            <select name="theme" id="theme-select" class="selector">
+                                <option value="0" class="translatable" data-key="browser-theme">Browser theme</option>
+                                <option value="1" class="translatable" data-key="light">Light</option>
+                                <option value="2" class="translatable" data-key="dark">Dark</option>
                             </select>
                         </div>
                     </div>
                     <div class="settings-tile">
-                        <div class="settings-tile-label"><span class="translatable" data-key="settings">Language selector</span></div>
+                        <div class="settings-tile-label"><span class="translatable" data-key="language-selector">Language selector</span></div>
                         <div class="settings-tile-action">
-                            <select name="lang" id="lang-select" class="selector" disabled>
+                            <select name="lang" id="lang-select" class="selector">
                                 <option value="en">EN</option>
                                 <option value="es">ES</option>
                             </select>
                         </div>
                     </div>
                     <div class="settings-tile">
-                        <div class="settings-tile-label"><span class="translatable" data-key="settings">Data export</span></div>
+                        <div class="settings-tile-label"><span class="translatable" data-key="data-export">Data export</span></div>
                         <div class="settings-tile-action">
-                            <div id="export-btn" class="button"><span class="translatable" data-key="settings">Export</span></div>
+                            <div id="export-btn" class="button"><span class="translatable" data-key="export">Export</span></div>
                         </div>
                     </div>
                     <div></div>
                     <div class="file-import-container">
-                        <div class="title"><span class="translatable" data-key="settings">Import file</span></div>
+                        <div class="title"><span class="translatable" data-key="import-file">Import file</span></div>
                         <div id="drop-zone" class="drop-zone">
                             <i class="fas fa-file-upload fa-5x file-icon"></i>
                             <input id="file-upload" style="display: none;" type="file" accept="application/json">
@@ -110,11 +110,11 @@
         <div id="import-dialog-page" class="page-container hidden-behind">
             <div id="import-dialog-out" class="import-dialog-grid">
                 <div class="import-dialog-base">
-                    <div class="import-dialog-text"><strong><span id="import-group-number"></span></strong> <span class="translatable" data-key="settings">tab groups found. Select an import method.</span></div>
+                    <div class="import-dialog-text"><strong><span id="import-group-number"></span></strong> <span class="translatable" data-key="import-method">tab groups found. Select an import method.</span></div>
                     <div class="import-dialog-buttons">
-                        <div id="import-dialog-overwrite" class="button"><span class="translatable" data-key="settings">Overwrite</span></div>
-                        <div id="import-dialog-merge" class="button"><span class="translatable" data-key="settings">Merge</span></div>
-                        <div id="import-dialog-cancel" class="button"><span class="translatable" data-key="settings">Cancel</span></div>
+                        <div id="import-dialog-overwrite" class="button"><span class="translatable" data-key="overwrite">Overwrite</span></div>
+                        <div id="import-dialog-merge" class="button"><span class="translatable" data-key="merge">Merge</span></div>
+                        <div id="import-dialog-cancel" class="button"><span class="translatable" data-key="cancel">Cancel</span></div>
                     </div>
                 </div>
             </div>

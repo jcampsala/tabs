@@ -30,5 +30,45 @@
     "theme-selector": {
         "en": "Theme selector",
         "es": "Selector de tema"
+    },
+    "language-selector": {
+        "en": "Language selector",
+        "es": "Selector de lenguaje"
+    },
+    "data-export": {
+        "en": "Data export",
+        "es": "Exportación de datos"
+    },
+    "export": {
+        "en": "Export",
+        "es": "Exportar"
+    },
+    "import-file": {
+        "en": "Import file",
+        "es": "Archivo de importación"
+    },
+    "import-method": {
+        "en": "tab groups found. Select an import method.",
+        "es": "grupos de penstañas encontrados. Selecciona un método de importación."
+    },
+    "overwrite": {
+        "en": "Overwrite",
+        "es": "Sobreescribir"
+    },
+    "merge": {
+        "en": "Meerge",
+        "es": "Combinar"
+    },
+    "browser-theme": {
+        "en": "Browser theme",
+        "es": "Tema del navegador"
+    },
+    "light": {
+        "en": "Light",
+        "es": "Claro"
+    },
+    "dark": {
+        "en": "Dark",
+        "es": "Oscuro"
     }
 }

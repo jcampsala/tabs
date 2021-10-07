@@ -15,14 +15,24 @@ class SettingsManager {
         this.theme = settings.theme;
     }
 
+    toJSON() {
+        return {
+            languageOptions: this.languageOptions,
+            language: this.language,
+            themeOptions: this.themeOptions,
+            theme: this.theme
+        };
+    }
+
     async saveChanges() {
-        await chromeStorageSyncSet({ laguage: this.language, theme: this.theme });
+        await chromeStorageSyncSet({ settings: this.toJSON() });
     }
 
     updateLanguage(lang) {
         if(this.languageOptions.includes(lang)) {
             this.language = lang;
             this.saveChanges();
+            this.translateAll();
         } else {
             console.error(`Language ${lang} is not available!`);
         }

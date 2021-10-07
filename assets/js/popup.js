@@ -1,14 +1,15 @@
-let manager;
+let tabsManager;
 let settingsManager;
 
 async function init() {
-    manager = new TabsManager();
-    await manager.init();
+    tabsManager = new TabsManager();
+    await tabsManager.init();
 
     settingsManager = new SettingsManager();
     await settingsManager.init();
+    settingsManager.translateAll();
 
-    initAllListeners(manager);
+    initAllListeners(tabsManager, settingsManager);
 }
 
 init();
