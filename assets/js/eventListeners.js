@@ -95,7 +95,7 @@ function setSettingsListeners(tabsManager, settingsManager) {
                     }
                 }
             } else {
-                showSnackbar('Not a JSON file!');
+                showSnackbar(settingsManager.gettext('Not a JSON file!'));
             }
         }
         fileUpload.value = null;
@@ -109,7 +109,7 @@ function setSettingsListeners(tabsManager, settingsManager) {
     let exportBtn = document.getElementById('export-btn');
     exportBtn.onclick = () => {
         tabsManager.exportJSON();
-        showSnackbar('Export file generated!', null, true);
+        showSnackbar(settingsManager.gettext('Export file generated!'), null, true);
     }
 
     let themeSelect = document.getElementById('theme-select');
@@ -130,13 +130,13 @@ function parseImportFile(tabsManager, fileContents) {
         let importedJSON = JSON.parse(fileContents);
         let importSize = tabsManager.checkImportData(importedJSON);
         if(importSize < 1) {
-            showSnackbar('JSON file contains invalid data');
+            showSnackbar(settingsManager.gettext('JSON file contains invalid data'));
             return -1;
         } else {
             return importSize;
         }
     } catch(e) {
-        showSnackbar('JSON file is not valid!');
+        showSnackbar(settingsManager.gettext('JSON file is not valid!'));
         return -1;
     }
 }
@@ -155,9 +155,9 @@ function setImportDialogListeners(tabsManager) {
     overwriteButton.onclick = () => {
         let importResult = tabsManager.importJSON(dialog.importContent);
         if(importResult > 0) {
-            showSnackbar(`${importResult} groups imported`, null, true);
+            showSnackbar(`${importResult} ${settingsManager.gettext('groups imported')}`, null, true);
         } else {
-            showSnackbar('Import failed!');
+            showSnackbar(settingsManager.gettext('Import failed!'));
         }
         dialog.togglePage(false);
     }
@@ -166,9 +166,9 @@ function setImportDialogListeners(tabsManager) {
     mergeButton.onclick = () => {
         let importResult = tabsManager.importJSON(dialog.importContent, true);
         if(importResult > 0) {
-            showSnackbar(`${importResult} groups imported`, null, true);
+            showSnackbar(`${importResult} ${settingsManager.gettext('groups imported')}`, null, true);
         } else {
-            showSnackbar('Import failed!');
+            showSnackbar(settingsManager.gettext('Import failed!'));
         }
         dialog.togglePage(false);
     }
@@ -227,7 +227,7 @@ function validateGroupCreation(tabsManager, withTabs = false) {
         let inputFocus = () => {
             groupNameInput.focus();
         };
-        showSnackbar('Group name cannot be empty!', inputFocus);
+        showSnackbar(settingsManager.gettext('Group name cannot be empty!'), inputFocus);
     }
 }
 

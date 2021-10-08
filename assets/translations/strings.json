@@ -70,5 +70,33 @@
     "dark": {
         "en": "Dark",
         "es": "Oscuro"
+    },
+    "Group name cannot be empty!": {
+        "en": "Group name cannot be empty!",
+        "es": "¡El nombre del grupo no puede estar vacío!"
+    },
+    "Import failed!": {
+        "en": "Import failed!",
+        "es": "¡Error al importar!"
+    },
+    "groups imported": {
+        "en": "groups imported",
+        "es": "grupos importados"
+    },
+    "JSON file is not valid!": {
+        "en": "JSON file is not valid!",
+        "es": "¡El archivo JSON no es válido!"
+    },
+    "JSON file contains invalid data": {
+        "en": "JSON file contains invalid data",
+        "es": "EL archivo JSON contiene datos inválidos"
+    },
+    "Not a JSON file!": {
+        "en": "Not a JSON file!",
+        "es": "¡No es un archivo JSON!"
+    },
+    "Export file generated!": {
+        "en": "Export file generated!",
+        "es": "¡Archivo de exportación generado!"
     }
 }

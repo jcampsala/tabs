@@ -5,6 +5,7 @@ class SettingsManager {
         this.themeOptions = [ 0, 1, 2];
         this.theme = 0;
         this.translationsPath = 'assets/translations/strings.json';
+        this.dictionary = {};
     }
 
     async init() {
@@ -13,6 +14,7 @@ class SettingsManager {
         this.language = settings.language;
         this.themeOptions = settings.themeOptions;
         this.theme = settings.theme;
+        this.dictionary = JSON.parse(await this.loadTranslations());
     }
 
     toJSON() {
@@ -47,26 +49,22 @@ class SettingsManager {
         }
     }
 
-    async gettext(key) {
-        let dictionary = await this.loadTranslations();
-        if(Array.isArray(key)) {
-            let translations = {};
-            for(let str of key) {
-                translations[str] = dictionary[str][this.language];
-            }
-            return translations;
+    gettext(key) {
+        if(this.dictionary[key]) {
+            return this.dictionary[key][this.language];
         } else {
-            dictionary[str][this.language];
+            console.error(`No translation found for key <${key}>!`);
+            console.error(this.getPendingTranslations([key]));
+            return key;
         }
     }
 
-    async translateElements(elements) {
-        let dictionary = JSON.parse(await this.loadTranslations());
+    translateElements(elements) {
         let notFound = [];
         for(let element of elements) {
             let key = element.dataset.key;
-            if(dictionary[key] && dictionary[key][this.language]) {
-                element.innerHTML = dictionary[key][this.language];
+            if(this.dictionary[key] && this.dictionary[key][this.language]) {
+                element.innerHTML = this.dictionary[key][this.language];
             } else {
                 console.error(`No translation found for key <${key}>!`);
                 notFound.push(key);

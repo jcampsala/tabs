@@ -2,3 +2,5 @@ Functionality checklist:
     - Translatable
     - Dark and light themes
     - Set group as locked so it ignores changes (sorta like a bookmark group)
+    - Add tooltips
+    - Consider more animations (like animating export button on finished)
