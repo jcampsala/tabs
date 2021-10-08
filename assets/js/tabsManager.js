@@ -54,22 +54,22 @@ class TabsManager {
 
     // this function could be inside tabGroup.js
     buildRow(group) {
-        let rowHtml = `<div id="${group.id}-row" class="tabs-row">
-            <div class="tabs-row-top ${this.currentGroup == group ? 'selected' : ''}">
+        let rowHtml = `<div id="${group.id}-row" class="tabs-row theme">
+            <div class="tabs-row-top theme ${this.currentGroup == group ? 'selected' : ''}">
                 <div class="row-top-name">${group.name}</div>
-                <div class="row-top-button"><a id="${group.id}-delete" class="row-delete-btn"><i class="fas fa-trash-alt"></i></a></div>
+                <div class="row-top-button"><a id="${group.id}-delete" class="row-delete-btn theme"><i class="fas fa-trash-alt"></i></a></div>
             </div>
             <div id="${group.id}-row-main" class="tabs-row-main">`;
         let limit = 5; let count = 0;
         for(let tab of group.tabs) {
             if(count < limit) {
-                rowHtml += `<div class="tab-list-icon">
+                rowHtml += `<div class="tab-list-icon theme">
                     <div class="centered-icon-container">
                         <img class="contained-icon" src="${tab.favIconUrl != null && tab.favIconUrl.length > 0 ? tab.favIconUrl : 'assets/images/icon32.png'}">
                     </div>
                 </div>`;
             } else {
-                rowHtml += `<div class="tab-list-icon">
+                rowHtml += `<div class="tab-list-icon theme">
                     <div class="centered-icon-container">
                         <div class="contained-icon more-tab">
                             <i class="fas fa-plus"></i>

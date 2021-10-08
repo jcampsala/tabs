@@ -7,7 +7,7 @@ chrome.runtime.onInstalled.addListener(() => {
                 language: 'en',
                 themeOptions: [ 0, 1, 2],
                 theme: 0
-            } 
+            }
         }, () => {
             console.log('Instalation default data set!');
         });

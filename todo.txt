@@ -1,6 +1,10 @@
 Functionality checklist:
-    - Translatable
+    - OK ===> Translatable
     - Dark and light themes
     - Set group as locked so it ignores changes (sorta like a bookmark group)
     - Add tooltips
     - Consider more animations (like animating export button on finished)
+    - Consider a secondary color (like blue) for buttons, hightlight...
+
+Bug fixes:
+    - When user tabs right creation page input is focused and makes it move
