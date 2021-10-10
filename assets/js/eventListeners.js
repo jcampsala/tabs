@@ -115,7 +115,7 @@ function setSettingsListeners(tabsManager, settingsManager) {
     let themeSelect = document.getElementById('theme-select');
     themeSelect.value = settingsManager.theme;
     themeSelect.onchange = () => {
-        settingsManager.updateTheme(parseInt(themeSelect.value));
+        settingsManager.updateTheme(themeSelect.value);
     }
 
     let languageSelect = document.getElementById('lang-select');

@@ -1,12 +1,27 @@
-body {
-    background-color: rgb(50, 50, 50);
-    color: white;
-    border-radius: 5px;
+[data-theme = 'dark'] {
+    --bg-color-1: rgb(50, 50, 50);
+    --bg-color-2: rgb(70, 70, 70);
+    --bg-color-3: rgb(40, 40, 40);
+    --bg-color-4: rgb(30, 30, 30);
+    --bg-color-5: rgb(80, 80, 80);
+    --hover-color-1: rgb(100, 100, 100);
+    --text-color: white;
 }
 
-body.light {
-    background-color: rgb(205, 205, 205);
-    color: black;
+[data-theme = 'light'] {
+    --bg-color-1: rgb(205, 205, 205);
+    --bg-color-2: rgb(185, 185, 185);
+    --bg-color-3: rgb(215, 215, 215);
+    --bg-color-4: rgb(225, 225, 225);
+    --bg-color-5: rgb(175, 175, 175);
+    --hover-color-1: rgb(105, 105, 105);
+    --text-color: black;
+}
+
+body {
+    background-color: var(--bg-color-1);
+    color: var(--text-color);
+    border-radius: 5px;
 }
 
 #app {
@@ -15,11 +30,7 @@ body.light {
 }
 
 .separator {
-    border-top: 3px solid rgb(70, 70, 70);
-}
-
-.separator.light {
-    border-top: 3px solid rgb(185, 185, 185);
+    border-top: 3px solid var(--bg-color-2);
 }
 
 .page-container {
@@ -37,17 +48,12 @@ body.light {
 
 .tools-row {
     display: grid;
-    background-color: rgb(70, 70, 70);
+    background-color: var(--bg-color-2);
     border-radius: 5px;
     grid-template-columns: 35% 25% 25% 15%;
     grid-template-rows: 100%;
     justify-items: center;
     align-items: center;
-}
-
-.tools-row.light {
-    display: grid;
-    background-color: rgb(185, 185, 185);
 }
 
 .outer-tabs-container::-webkit-scrollbar {
@@ -76,11 +82,7 @@ body.light {
 }
 
 .mid-tabs-container {
-    background-color: rgb(50, 50, 50);
-}
-
-.mid-tabs-container.light {
-    background-color: rgb(205, 205, 205);
+    background-color: var(--bg-color-1);
 }
 
 .tab-groups-container {
@@ -96,7 +98,7 @@ body.light {
 }
 
 .tabs-row {
-    background-color: rgb(70, 70, 70);
+    background-color: var(--bg-color-2);
     border-radius: 5px;
     display: grid;
     grid-template-columns: 100%;
@@ -104,21 +106,13 @@ body.light {
     max-height: 25vh;
 }
 
-.tabs-row.light {
-    background-color: rgb(185, 185, 185);
-}
-
 .tabs-row-top {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: rgb(40, 40, 40);
+    background-color: var(--bg-color-3);
     display: grid;
     grid-template-columns: 90% 10%;
     grid-template-rows: 100%;
-}
-
-.tabs-row-top.light {
-    background-color: rgb(215, 215, 215);
 }
 
 .row-top-name {
@@ -136,19 +130,11 @@ body.light {
     cursor: pointer;
     border: none;
     padding: 2px 5px;
-    background-color:rgb(50, 50, 50);
-}
-
-.row-delete-btn.light {
-    background-color:rgb(205, 205, 205);
+    background-color:var(--bg-color-1);
 }
 
 .row-delete-btn:hover {
-    background-color: rgb(100, 100, 100);
-}
-
-.row-delete-btn:hover.light {
-    background-color: rgb(105, 105, 105);
+    background-color: var(--hover-color-1);
 }
 
 .tabs-row-top.selected {
@@ -169,13 +155,9 @@ body.light {
     max-height: 60px;
     max-width: 60px;
     border-radius: 5px;
-    background-color: rgb(40, 40, 40);
+    background-color: var(--bg-color-3);
     padding-bottom: 8px;
     padding-top: 8px;
-}
-
-.tab-list-icon.light {
-    background-color: rgb(215, 215, 215);
 }
 
 .centered-icon-container {
@@ -207,19 +189,11 @@ body.light {
     cursor: pointer;
     border: none;
     padding: 10px 10px;
-    background-color:rgb(50, 50, 50);
-}
-
-.button.light {
-    background-color:rgb(205, 205, 205);
+    background-color:var(--bg-color-1);
 }
 
 .button:hover {
-    background-color: rgb(100, 100, 100);
-}
-
-.button:hover.light {
-    background-color: rgb(105, 105, 105);
+    background-color: var(--hover-color-1);
 }
 
 .button.small {
@@ -236,11 +210,7 @@ body.light {
     top: 0%;
     right: -100%;
     transition: right 200ms ease;
-    background-color: rgb(50, 50, 50);
-}
-
-.hidden-right.light {
-    background-color: rgb(205, 205, 205);
+    background-color: var(--bg-color-1);
 }
 
 .slide-from-right {
@@ -250,16 +220,12 @@ body.light {
 
 .creation-top-row {
     display: grid;
-    background-color: rgb(70, 70, 70);
+    background-color: var(--bg-color-2);
     border-radius: 5px;
     grid-template-columns: 15% 85%;
     grid-template-rows: 100%;
     justify-items: center;
     align-items: center;
-}
-
-.creation-top-row.light {
-    background-color: rgb(185, 185, 185);
 }
 
 .page-fit-container {
@@ -270,25 +236,16 @@ body.light {
 .group-name-input {
     background-color: rgba(0, 0, 0, 0);
     border: 0px;
-    border-bottom: solid rgb(50, 50, 50);
-    color: white;
+    border-bottom: solid var(--bg-color-1);
+    color: var(--text-color);
     padding-top: 10px;
     padding-bottom: 5px;
     font-size: 15px;
 }
 
-.group-name-input.light {
-    border-bottom: solid rgb(105, 105, 105);
-    color: black;
-}
-
 .group-name-input:focus {
     outline: none;
-    border-bottom: solid rgb(100,100,100);
-}
-
-.group-name-input:focus.light {
-    border-bottom: solid rgb(105,105,105);
+    border-bottom: solid var(--hover-color-1);
 }
 
 .hidden-behind {
@@ -321,7 +278,7 @@ body.light {
 }
 
 .delete-dialog-base {
-    background-color: rgb(30, 30, 30);
+    background-color: var(--bg-color-4);
     border-radius: 5px;
     width: 50%;
     height: 30%;
@@ -329,10 +286,6 @@ body.light {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 50%;
-}
-
-.delete-dialog-base.light {
-    background-color: rgb(225, 225, 225);
 }
 
 .delete-dialog-text {
@@ -357,11 +310,7 @@ body.light {
     top: -100%;
     right: 0%;
     transition: top 200ms ease;
-    background-color: rgb(50, 50, 50);
-}
-
-.hidden-above.light {
-    background-color: rgb(205, 205, 205);
+    background-color: var(--bg-color-1);
 }
 
 .slide-from-above {
@@ -391,15 +340,11 @@ body.light {
 }
 
 .settings-tile {
-    background-color: rgb(30, 30, 30);
+    background-color: var(--bg-color-4);
     border-radius: 5px;
     display: grid;
     grid-template-columns: 90% 10%;
     grid-template-rows: 100%;
-}
-
-.settings-tile.light {
-    background-color: rgb(225, 225, 225);
 }
 
 .settings-tile-label {
@@ -425,16 +370,12 @@ body.light {
 .tab-cell {
     display: grid;
     border-radius: 5px;
-    background-color: rgb(70, 70, 70);
+    background-color: var(--bg-color-2);
     height: 45vw;
     width: 45vw;
     cursor: pointer;
     grid-template-columns: 100%;
     grid-template-rows: 25% 75%;
-}
-
-.tab-cell.light {
-    background-color: rgb(185, 185, 185);
 }
 
 .tab-cell.small {
@@ -448,14 +389,10 @@ body.light {
     grid-template-rows: 100%;
     justify-items: center;
     align-items: center;
-    background-color: rgb(40,40,40);
+    background-color: var(--bg-color-3);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     column-gap: 2px;
-}
-
-.tab-cell-top-row.light {
-    background-color: rgb(215, 215, 215);
 }
 
 .tab-cell-bottom-row {
@@ -490,15 +427,11 @@ body.light {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 100%;
-    background-color: rgb(70, 70, 70);
+    background-color: var(--bg-color-2);
     border-radius: 5px;
     height: 81.5vh;
     justify-items: center;
     align-items: center;
-}
-
-.create-group-options-container.light {
-    background-color: rgb(185, 185, 185);
 }
 
 .button.row-button {
@@ -542,16 +475,12 @@ body.light {
 }
 
 .selector {
-    background-color: rgb(80, 80, 80);
+    background-color: var(--bg-color-5);
     color: white;
     border: solid 0px;
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
-}
-
-.selector.light {
-    background-color: rgb(175, 175, 175);
 }
 
 .selector:focus {
@@ -562,12 +491,8 @@ body.light {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 15% 85%;
-    background-color: rgb(30, 30, 30);
+    background-color: var(--bg-color-4);
     border-radius: 5px;
-}
-
-.file-import-container.light {
-    background-color: rgb(225, 225, 225);
 }
 
 .file-import-container .title {
@@ -576,7 +501,7 @@ body.light {
 }
 
 .file-import-container .drop-zone {
-    border: solid 2px rgb(80, 80, 80);
+    border: solid 2px var(--bg-color-5);
     margin: 10px;
     border-radius: 5px;
     display: grid;
@@ -587,32 +512,16 @@ body.light {
     cursor: pointer;
 }
 
-.file-import-container .drop-zone.light {
-    border: solid 2px rgb(175, 175, 175);
-}
-
 .file-import-container .drop-zone:hover {
-    border: solid 2px rgb(255, 255, 255);
-}
-
-.file-import-container .drop-zone:hover.light {
-    border: solid 2px rgb(0, 0, 0);
+    border: solid 2px var(--text-color);
 }
 
 .file-import-container .file-icon {
-    color: rgb(80, 80, 80);
-}
-
-.file-import-container .file-icon.light {
-    color: rgb(175, 175, 175);
+    color: var(--bg-color-5);
 }
 
 .file-import-container .drop-zone:hover .file-icon {
-    color: rgb(255, 255, 255);
-}
-
-.file-import-container .drop-zone:hover .file-icon.light {
-    color: rgb(0, 0, 0);
+    color: var(--text-color);
 }
 
 .import-dialog-grid {
@@ -626,7 +535,7 @@ body.light {
 }
 
 .import-dialog-base {
-    background-color: rgb(30, 30, 30);
+    background-color: var(--bg-color-4);
     border-radius: 5px;
     width: 60%;
     height: 30%;
@@ -634,10 +543,6 @@ body.light {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 50%;
-}
-
-.import-dialog-base.light {
-    background-color: rgb(225, 225, 225);
 }
 
 .import-dialog-text {

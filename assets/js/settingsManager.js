@@ -2,8 +2,8 @@ class SettingsManager {
     constructor() {
         this.languageOptions = [ 'en', 'es' ];
         this.language = 'en';
-        this.themeOptions = [ 0, 1, 2];
-        this.theme = 0;
+        this.themeOptions = [ 'browser', 'lght', 'dark'];
+        this.theme = 'browser';
         this.translationsPath = 'assets/translations/strings.json';
         this.dictionary = {};
     }
@@ -14,7 +14,21 @@ class SettingsManager {
         this.language = settings.language;
         this.themeOptions = settings.themeOptions;
         this.theme = settings.theme;
+        this.setDataTheme();
         this.dictionary = JSON.parse(await this.loadTranslations());
+    }
+
+    setDataTheme() {
+        if(['light', 'dark'].includes(this.theme)) {
+            document.documentElement.setAttribute('data-theme', this.theme);
+        } else {
+            // Detect user browser theme
+            if(window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        }
     }
 
     toJSON() {
@@ -44,6 +58,7 @@ class SettingsManager {
         if(this.themeOptions.includes(theme)) {
             this.theme = theme;
             this.saveChanges();
+            this.setDataTheme();
         } else {
             console.error(`Theme ${theme} is not available!`);
         }
@@ -104,5 +119,9 @@ class SettingsManager {
             }
         }
         return JSON.stringify(translationJson);
+    }
+
+    switchTheme(theme) {
+        
     }
 }
