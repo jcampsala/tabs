@@ -23,6 +23,9 @@ class TabsManager {
         this.saveAndUpdate();
         if(!withTabs)
             this.openGroup(newGroup.id);
+
+        // Testing new db
+        await dbManager.addTabGroups(this.tabGroups);
     }
 
     async getCurrentTab() {
@@ -151,6 +154,7 @@ class TabsManager {
                     focused: true,
                     state: 'maximized'
                 });
+                window.close();
             } catch(e) {
                 // TODO: tab tracking can fail when this route is taken
                 selectedTabGroup.unlinkWindow();
@@ -163,7 +167,9 @@ class TabsManager {
                 state: 'maximized' 
             });
             selectedTabGroup.linkWindow(newWindow.id);
-            this.saveChanges();
+            selectedTabGroup.openedByExtension = true;
+            await this.saveChanges();
+            window.close();
         }
     }
 

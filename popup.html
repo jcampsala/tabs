@@ -3,47 +3,46 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- TODO: add a script to set data theme -->
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="/assets/css/all.min.css">
 </head>
 
-<body class="theme">
+<body>
     <div id="app">
-        <div id="tab-groups-page" class="page-container theme">
+        <div id="tab-groups-page" class="page-container">
             <div class="main-grid">
-                <div class="tools-row theme">
-                    <a id="create-group-btn" class="button theme"><i class="far fa-plus-square"></i> <span class="translatable" data-key="new-group">New group</span></a>
+                <div class="tools-row">
+                    <a id="create-group-btn" class="button"><i class="far fa-plus-square"></i> <span class="translatable" data-key="new-group">New group</span></a>
                     <div></div>
                     <div></div>
-                    <a id="settings-btn" class="button theme"><i class="fas fa-cog"></i></a>
+                    <a id="settings-btn" class="button"><i class="fas fa-cog"></i></a>
                 </div>
-                <div class="separator theme"></div>
+                <div class="separator"></div>
                 <div class="outer-tabs-container scroll-hidden">
-                    <div id="group-grid-container" class="mid-tabs-container theme">
+                    <div id="group-grid-container" class="mid-tabs-container">
                         <!-- Column of tag groups -->
                     </div>
                 </div>
             </div>
         </div>
-        <div id="create-group-page" class="page-container hidden-right theme">
+        <div id="create-group-page" class="page-container hidden-right">
             <div class="page-fit-container">
                 <div class="main-grid">
-                    <div class="creation-top-row theme">
-                        <a id="create-group-back-btn" class="button theme"><i class="far fa-caret-square-left"></i></a>
+                    <div class="creation-top-row">
+                        <a id="create-group-back-btn" class="button"><i class="far fa-caret-square-left"></i></a>
                         <div style="justify-self: left;">
-                            <input id="creation-group-name" class="group-name-input theme" placeholder="New group name" maxlength="50">
+                            <input id="creation-group-name" class="group-name-input" placeholder="New group name" maxlength="50">
                         </div>
                     </div>
                     <div class="separator"></div>
                     <div class="outer-tabs-container scroll-hidden">
-                        <div class="mid-tabs-container theme">
-                            <div class="create-group-options-container theme">
-                                <div id="create-empty-group-btn" class="button row-button theme" style="text-align: center;">
+                        <div class="mid-tabs-container">
+                            <div class="create-group-options-container">
+                                <div id="create-empty-group-btn" class="button row-button" style="text-align: center;">
                                     <div><i class="far fa-folder-open fa-7x"></i></div>
                                     <div><span class="translatable" data-key="create-empty">Create empty</span></div>
                                 </div>
-                                <div id="create-current-tab-group-btn" class="button row-button theme" style="text-align: center;">
+                                <div id="create-current-tab-group-btn" class="button row-button" style="text-align: center;">
                                     <div><i class="fas fa-folder-plus fa-7x"></i></div>
                                     <div><span class="translatable" data-key="create-current">Create with current tabs</span></div>
                                 </div>
@@ -53,68 +52,68 @@
                 </div>
             </div>
         </div>
-        <div id="delete-dialog-page" class="page-container hidden-behind theme">
+        <div id="delete-dialog-page" class="page-container hidden-behind">
             <div id="delete-dialog-out" class="delete-dialog-grid">
-                <div class="delete-dialog-base theme">
+                <div class="delete-dialog-base">
                     <div class="delete-dialog-text"><span id="delete-group-name"></span> <span class="translatable" data-key="confirm-delete">will be deleted. Confirm?</span></div>
                     <div class="delete-dialog-buttons">
-                        <div id="delete-dialog-confirm" class="button symmetric theme"><span class="translatable" data-key="confirm">Confirm</span></div>
-                        <div id="delete-dialog-cancel" class="button symmetric theme"><span class="translatable" data-key="cancel">Cancel</span></div>
+                        <div id="delete-dialog-confirm" class="button symmetric"><span class="translatable" data-key="confirm">Confirm</span></div>
+                        <div id="delete-dialog-cancel" class="button symmetric"><span class="translatable" data-key="cancel">Cancel</span></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="settings-page" class="page-container hidden-above theme">
+        <div id="settings-page" class="page-container hidden-above">
             <div class="page-fit-container">
                 <div class="settings-rows">
                     <div class="settings-actions">
-                        <a id="settings-back-btn" class="button theme"><i class="far fa-times-circle fa-lg"></i></a>
+                        <a id="settings-back-btn" class="button"><i class="far fa-times-circle fa-lg"></i></a>
                     </div>
                     <div class="settings-title"><span class="translatable" data-key="settings">Settings</span></div>
-                    <div class="settings-tile theme">
+                    <div class="settings-tile">
                         <div class="settings-tile-label"><span class="translatable" data-key="theme-selector">Theme selector</span></div>
                         <div class="settings-tile-action">
-                            <select name="theme" id="theme-select" class="selector theme">
+                            <select name="theme" id="theme-select" class="selector">
                                 <option value="browser" class="translatable" data-key="browser-theme">Browser theme</option>
                                 <option value="light" class="translatable" data-key="light">Light</option>
                                 <option value="dark" class="translatable" data-key="dark">Dark</option>
                             </select>
                         </div>
                     </div>
-                    <div class="settings-tile theme">
+                    <div class="settings-tile">
                         <div class="settings-tile-label"><span class="translatable" data-key="language-selector">Language selector</span></div>
                         <div class="settings-tile-action">
-                            <select name="lang" id="lang-select" class="selector theme">
+                            <select name="lang" id="lang-select" class="selector">
                                 <option value="en">EN</option>
                                 <option value="es">ES</option>
                             </select>
                         </div>
                     </div>
-                    <div class="settings-tile theme">
+                    <div class="settings-tile">
                         <div class="settings-tile-label"><span class="translatable" data-key="data-export">Data export</span></div>
                         <div class="settings-tile-action">
-                            <div id="export-btn" class="button theme"><span class="translatable" data-key="export">Export</span></div>
+                            <div id="export-btn" class="button"><span class="translatable" data-key="export">Export</span></div>
                         </div>
                     </div>
                     <div></div>
-                    <div class="file-import-container theme">
+                    <div class="file-import-container">
                         <div class="title"><span class="translatable" data-key="import-file">Import file</span></div>
-                        <div id="drop-zone" class="drop-zone theme">
-                            <i class="fas fa-file-upload fa-5x file-icon theme"></i>
+                        <div id="drop-zone" class="drop-zone">
+                            <i class="fas fa-file-upload fa-5x file-icon"></i>
                             <input id="file-upload" style="display: none;" type="file" accept="application/json">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="import-dialog-page" class="page-container hidden-behind theme">
+        <div id="import-dialog-page" class="page-container hidden-behind">
             <div id="import-dialog-out" class="import-dialog-grid">
-                <div class="import-dialog-base theme">
+                <div class="import-dialog-base">
                     <div class="import-dialog-text"><strong><span id="import-group-number"></span></strong> <span class="translatable" data-key="import-method">tab groups found. Select an import method.</span></div>
                     <div class="import-dialog-buttons">
-                        <div id="import-dialog-overwrite" class="button theme"><span class="translatable" data-key="overwrite">Overwrite</span></div>
-                        <div id="import-dialog-merge" class="button theme"><span class="translatable" data-key="merge">Merge</span></div>
-                        <div id="import-dialog-cancel" class="button theme"><span class="translatable" data-key="cancel">Cancel</span></div>
+                        <div id="import-dialog-overwrite" class="button"><span class="translatable" data-key="overwrite">Overwrite</span></div>
+                        <div id="import-dialog-merge" class="button"><span class="translatable" data-key="merge">Merge</span></div>
+                        <div id="import-dialog-cancel" class="button"><span class="translatable" data-key="cancel">Cancel</span></div>
                     </div>
                 </div>
             </div>
@@ -128,6 +127,7 @@
     <script src="/assets/js/settingsManager.js"></script>
     <script src="/assets/js/chromePromises.js"></script>
     <script src="/assets/js/eventListeners.js"></script>
+    <script src="/assets/js/dbManager.js"></script>
     <script src="/assets/js/popup.js"></script>
 </body>
 

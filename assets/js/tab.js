@@ -1,10 +1,11 @@
 class Tab {
-    constructor(url, title, favIconUrl, tabId, priority) {
+    constructor(url, title, favIconUrl, tabId, priority, id) {
         this.url = url;
         this.title = title;
         this.favIconUrl = favIconUrl;
         this.tabId = tabId ?? -1;
         this.priority = priority ?? 0;
+        this.id = id;
     }
 
     toJSON() {
@@ -13,7 +14,8 @@ class Tab {
             title: this.title,
             favIconUrl: this.favIconUrl,
             tabId: this.tabId,
-            priority: this.priority
+            priority: this.priority,
+            id: this.id
         };
     }
 
@@ -23,12 +25,17 @@ class Tab {
             json['title'],
             json['favIconUrl'],
             json['tabId'],
-            json['priority']
+            json['priority'],
+            json['id']
         );
     }
 
     linkTab(tabId) {
         this.tabId = tabId;
+    }
+
+    unlinkTab() {
+        this.tabId = -1;
     }
 
     hasLinkedTab() {
@@ -41,6 +48,7 @@ class Tab {
         this.favIconUrl = newData.favIconUrl ?? this.favIconUrl;
         this.tabId = newData.tabId ?? this.tabId;
         this.priority = newData.priority ?? this.priority;
+        this.id = newData.id ?? this.id;
     }
 
     shouldUpdate(newTab) {
