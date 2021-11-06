@@ -153,13 +153,16 @@ function setImportDialogListeners(tabsManager) {
 
     let overwriteButton = document.getElementById('import-dialog-overwrite');
     overwriteButton.onclick = () => {
-        let importResult = tabsManager.importJSON(dialog.importContent);
-        if(importResult > 0) {
-            showSnackbar(`${importResult} ${settingsManager.gettext('groups imported')}`, null, true);
-        } else {
-            showSnackbar(settingsManager.gettext('Import failed!'));
-        }
-        dialog.togglePage(false);
+        // let importResult = tabsManager.importJSON(dialog.importContent);
+        // if(importResult > 0) {
+        //     showSnackbar(`${importResult} ${settingsManager.gettext('groups imported')}`, null, true);
+        // } else {
+        //     showSnackbar(settingsManager.gettext('Import failed!'));
+        // }
+        // dialog.togglePage(false);
+        let data = dialog.importContent;
+        console.log(data);
+        dbManager.import(data);
     }
 
     let mergeButton = document.getElementById('import-dialog-merge');

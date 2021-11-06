@@ -1,10 +1,23 @@
 Functionality checklist:
     - OK ===> Translatable
-    - Dark and light themes
+    - OK ===> Dark and light themes
     - Set group as locked so it ignores changes (sorta like a bookmark group)
     - Add tooltips
     - Consider more animations (like animating export button on finished)
     - Consider a secondary color (like blue) for buttons, hightlight...
+    - Support chrome groups
+    - Replace chrome storage for indexedDB
 
 Bug fixes:
     - When user tabs right creation page input is focused and makes it move
+    - Restoring session unlinks windows and groups. Maybe test if all restored tabs are equal to all group tabs
+    - Check what happens when a tab is moved from one window to another
+    - When oppening browser group is correctly binded but a tab is added. This happens when the closed window id binded to group is the same as the new one. Maybe binding id values should be cleaned on startup.
+    - When reseting windowIds in onStartup, the window onCreate event is not affected
+    - Closing a window triggers the remove tag event. This is not the intentional behavior
+
+DB structure for chrome.storage:
+    - Two types of structures: tabGroups and tabs. Each is a top level object with db key => id
+    - Two array structures, one for tabGroups and one for tabs that collects ids of each structs
+    - To retreive all, check ids in arrays and pull those from DB
+    - To make the parent-child relationship there needs to be an array attr in tabgroups and an string attr in tabs for ids

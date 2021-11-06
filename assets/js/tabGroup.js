@@ -20,7 +20,6 @@ class TabGroup {
     }
 
     static fromJSON(json) {
-        console.log(json);
         return new TabGroup(
             json['name'],
             json['tabs'].map((tab) => Tab.fromJSON(tab)),
@@ -33,6 +32,15 @@ class TabGroup {
 
     getTabById(id) {
         return this.tabs.find((tab) => tab.tabId === id);
+    }
+
+    getTabByUrl(url, unlinked = false) {
+        if(unlinked) {
+            return this.tabs.find((tab) => tab.url === url && tab.tabId === -1);
+        } else {
+            return this.tabs.find((tab) => tab.url === url); 
+        }
+        // return this.tabs.find((tab) => !active ? tab.url === url : tab.url === url && tab.id === -1);
     }
 
     // show() {
@@ -64,8 +72,13 @@ class TabGroup {
         this.windowId = windowId;
     }
 
-    unlinkWindow() {
+    unlinkWindow(cascade = false) {
         this.windowId = -1;
+        if(cascade) {
+            for(let tab of this.tabs) {
+                tab.unlinkTab();
+            }
+        }
     }
 
     hasLinkedWindow() {
@@ -83,5 +96,14 @@ class TabGroup {
         } else {
             console.error(`No tab found with id ${id} in taab group ${this.id}`);
         }
+    }
+
+    updateWith(newData) {
+        this.name = newData.name ?? this.name;
+        this.tabs = newData.tabs ?? this.tabs;
+        this.windowId = newData.windowId ?? this.windowId;
+        this.priority = newData.priority ?? this.priority;
+        this.creationDate = newData.creationDate ?? this.creationDate; 
+        this.id = newData.id ?? this.id;
     }
 }

@@ -120,8 +120,4 @@ class SettingsManager {
         }
         return JSON.stringify(translationJson);
     }
-
-    switchTheme(theme) {
-        
-    }
 }
