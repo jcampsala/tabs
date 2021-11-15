@@ -7,10 +7,9 @@ class TabsManager {
 
     async init(callback) {
         let storageData = await chromeStorageSyncGet('groups');
+        // let storageData = await dbManager.getAllGroups();
         this.tabGroups = storageData.map((group) => TabGroup.fromJSON(group));
         this.ready = true;
-        // if(callback != null) callback(this.tabGroups);
-        // this.displayGroups();
         this.updateDisplay();
     }
 
@@ -25,7 +24,7 @@ class TabsManager {
             this.openGroup(newGroup.id);
 
         // Testing new db
-        await dbManager.addTabGroups(this.tabGroups);
+        // await dbManager.addTabGroups(this.tabGroups);
     }
 
     async getCurrentTab() {

@@ -12,12 +12,25 @@ class DbManager {
         return currentIndex;
     }
 
+    updateIndex(index, value) {
+        return new Promise(async (resolve, reject) => {
+            if(![this.tabGroupsKey, this.tabsKey].includes(index)) {
+                reject(`Type ${type} is not a valid index type`);
+            }
+            // TODO: check if this circumvents problem of overwriting data
+            await chromeStorageSyncSet(this.storageObj(index, value.map((id) => id.toString())));
+            resolve(true);
+        });
+    }
+
     getAllGroups() {
         return new Promise(async (resolve, reject) => {
             try {
                 let tabGroupsIds = await chromeStorageSyncGet(this.tabGroupsKey);
+                console.log('found group ids: ', tabGroupsIds);
                 let tabGroups = await chromeStorageSyncGet(tabGroupsIds);
-                resolve(tabGroups);
+                console.log('found groups: ', tabGroups);
+                resolve(tabGroups ?? []);
             } catch(e) {
                 console.error('db error: getAllGroups', e);
                 reject(e);
@@ -30,7 +43,7 @@ class DbManager {
             try {
                 let tabsIds = await chromeStorageSyncGet(this.tabsKey);
                 let tabs = await chromeStorageSyncGet(tabsIds);
-                resolve(tabs);
+                resolve(tabs ?? []);
             } catch(e) {
                 console.error('db error: getAllTabs', e);
                 reject(e);
@@ -66,7 +79,7 @@ class DbManager {
                         // await this.update(tab.id, tab);
                     }
                 }
-                await chromeStorageSyncSet(this.storageObj(this.tabGroupsKey, currentGroups));
+                await this.updateIndex(this.tabGroupsKey, currentGroups);
                 resolve(true);
             } catch(e) {
                 console.error('db error: addTabs', e);
@@ -90,7 +103,7 @@ class DbManager {
                         // await this.update(tab.id, tab);
                     }
                 }
-                await chromeStorageSyncSet(this.storageObj(this.tabsKey, currentTabs));
+                await this.updateIndex(this.tabsKey, currentTabs);
                 resolve(true);
             } catch(e) {
                 console.error('db error: addTabs', e);

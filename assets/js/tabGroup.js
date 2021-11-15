@@ -90,12 +90,14 @@ class TabGroup {
     }
 
     removeTab(id) {
-        let tabId = this.tabs.findIndex((tab) => tab.tabId === id);
-        if(tabId) {
-            this.tabs.splice(tabId, 1);
-        } else {
-            console.error(`No tab found with id ${id} in taab group ${this.id}`);
+        for(let i = 0; i < this.tabs.length; i++) {
+            if(this.tabs[i].tabId === id) {
+                this.tabs.splice(i, 1);
+                return 0;
+            }
         }
+        console.error(`No tab found with id ${id} in taab group ${this.id}`);
+        return -1;
     }
 
     updateWith(newData) {
