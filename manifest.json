@@ -1,6 +1,6 @@
 {
-    "name": "Tabs list",
-    "description": "Tab group manager",
+    "name": "Tab groups manager",
+    "description": "Make tab groups and switch between them",
     "version": "0.1.0",
     "manifest_version": 3,
     "icons": {
