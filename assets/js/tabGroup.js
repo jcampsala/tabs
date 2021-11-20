@@ -60,7 +60,6 @@ class TabGroup {
     }
 
     getDOMRow() {
-        // return document.getElementById(`${this.id}-row`);
         return document.getElementById(`${this.id}-row-main`);
     }
 
@@ -96,7 +95,6 @@ class TabGroup {
                 return 0;
             }
         }
-        console.error(`No tab found with id ${id} in taab group ${this.id}`);
         return -1;
     }
 
